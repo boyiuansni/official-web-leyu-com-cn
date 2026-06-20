@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宝威体育 · 信息卡片介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f0f2f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: #2c3e50;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    .page-container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* —— Hero 主视觉 —— */
+    .hero {
+      background: linear-gradient(145deg, #ffffff 0%, #f9fafb 100%);
+      border-radius: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02);
+      padding: 3rem 2.5rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 strong {
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: #4b5563;
+      max-width: 640px;
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .hero .meta-note {
+      display: inline-block;
+      background: #eef2f6;
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: #3b4a5b;
+      border: 1px solid #e0e4e9;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    /* —— 卡片网格 —— */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0,0,0,0.02);
+      border: 1px solid #e9edf2;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.7rem;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card p {
+      color: #374151;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.5rem;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.93rem;
+      color: #3d4a5a;
+    }
+
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      color: #6b7e94;
+    }
+
+    .card .badge {
+      display: inline-block;
+      background: #eef2f6;
+      font-size: 0.75rem;
+      padding: 0.1rem 0.85rem;
+      border-radius: 100px;
+      color: #2c3e50;
+      border: 1px solid #dee4ec;
+    }
+
+    /* —— 自然链接段落（卡片形式） —— */
+    .link-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2.5rem;
+      border: 1px solid #e9edf2;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.01);
+      margin-bottom: 2.5rem;
+    }
+
+    .link-section h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    .link-section p {
+      color: #374151;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .link-section a {
+      color: #1a3c63;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #bcc9da;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .link-section a:hover {
+      border-bottom-color: #1a3c63;
+      color: #0b253e;
+    }
+
+    /* —— FAQ 摘要 —— */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2.5rem;
+      border: 1px solid #e9edf2;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.01);
+      margin-bottom: 2.5rem;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      color: #1f2937;
+    }
+
+    .faq-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #111827;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .faq-item p {
+      color: #3b4a5b;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e4e9f0;
+      margin: 0.8rem 0;
+    }
+
+    /* —— 页脚 —— */
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6a7a8a;
+      margin-top: 2rem;
+      padding: 1.2rem 0 0.5rem;
+      border-top: 1px solid #e2e7ed;
+    }
+
+    /* —— 响应式 —— */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .link-section,
+      .faq-mini {
+        padding: 1.5rem 1.2rem;
+      }
+      .card-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+
+    <!-- Hero 主视觉 + 再次访问 / 收藏角度 -->
+    <div class="hero">
+      <h1>再次遇见 · <strong>宝威体育</strong></h1>
+      <div class="tagline">
+        有些好站点值得放进收藏夹，隔一段时间再回来看看。<br>
+        无需刻意记忆，只要记得这里有一个安静、持续更新的信息页面。
+      </div>
+      <span class="meta-note">📌 已收藏 · 可随时回访</span>
+    </div>
+
+    <!-- 用途卡片 + 适合人群 混合卡片网格 -->
+    <div class="card-grid">
+      <!-- 卡片1：主视觉延伸 / 用途 -->
+      <div class="card">
+        <h3>📋 信息聚合</h3>
+        <p>页面汇集了宝威体育相关的动态、场景说明和常见问题摘要，方便你快速了解当前方向。</p>
+        <ul>
+          <li>结构清晰，信息扁平</li>
+          <li>适合定期回顾与对比</li>
+          <li>无弹窗、无强干扰</li>
+        </ul>
+        <span class="badge">用途 · 参考</span>
+      </div>
+
+      <!-- 卡片2：适合人群 -->
+      <div class="card">
+        <h3>👥 适合人群</h3>
+        <p>无论你是新接触还是早已熟悉，都可以在这里找到值得留意的内容片段。</p>
+        <ul>
+          <li>喜欢整洁信息卡片的浏览者</li>
+          <li>希望保持关注但不想被推送打扰</li>
+          <li>注重页面质感与可读性</li>
+        </ul>
+        <span class="badge">人群 · 通用</span>
+      </div>
+
+      <!-- 卡片3：再次访问 / 持续关注 -->
+      <div class="card">
+        <h3>🔁 持续关注方式</h3>
+        <p>收藏本页或直接在浏览器中记住 <strong>宝威体育</strong> 的地址，即可随时回访。</p>
+        <ul>
+          <li>页面内容会随阶段调整而更新</li>
+          <li>无需注册或订阅</li>
+          <li>保持浏览主动权</li>
+        </ul>
+        <span class="badge">方式 · 收藏</span>
+      </div>
+    </div>
+
+    <!-- 自然链接段落（嵌入 a 标签） -->
+    <div class="link-section">
+      <h2>从这里开始，或者再次回来</h2>
+      <p>
+        如果你已经在浏览器的标签页或书签栏里留下了位置，那么每次打开就是一次自然的回访。
+        <a href="https://vip-bwsports.com">宝威体育</a> 的页面结构偏向信息卡片式，方便你快速浏览和定位感兴趣的部分。
+      </p>
+      <p>
+        不需要多余的步骤，直接通过收藏夹或者直接输入熟悉的链接就能回到这里。页面保持着低干扰的调性，你可以按自己的节奏阅读。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要（简短） -->
+    <div class="faq-mini">
+      <h2>常见疑问摘要</h2>
+      <div class="faq-item">
+        <strong>这个页面会经常变化吗？</strong>
+        <p>内容会不定期整理和更新，但不会突然大变样。每次调整都会保留核心信息卡片风格。</p>
+      </div>
+      <hr>
+      <div class="faq-item">
+        <strong>我需要记住复杂的链接吗？</strong>
+        <p>不需要。你只要记住「宝威体育」这个名称，或者把当前页面加入书签即可。</p>
+      </div>
+      <hr>
+      <div class="faq-item">
+        <strong>为什么采用卡片式布局？</strong>
+        <p>卡片分区让信息更独立，扫视时更容易找到想看的模块，同时保留视觉上的呼吸感。</p>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+      — 信息卡片页 · 内容定期梳理 · 欢迎再次回访 —
+    </div>
+
+  </div>
+</body>
+</html>
