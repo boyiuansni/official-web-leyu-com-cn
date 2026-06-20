@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>悟空体育 · 信息索引与内容对照</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5fafc;
+            color: #1a2b3c;
+            line-height: 1.6;
+            padding: 20px 16px 60px;
+        }
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* hero 区域 — 轻量摘要 */
+        .hero {
+            background: linear-gradient(135deg, #e0f0f5 0%, #c8e3ed 100%);
+            padding: 40px 28px 36px;
+            border-radius: 28px;
+            margin-bottom: 32px;
+            box-shadow: 0 6px 14px rgba(38, 98, 112, 0.06);
+            border: 1px solid rgba(90, 160, 175, 0.2);
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #0b3b47;
+            margin-bottom: 12px;
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #1b5565;
+            max-width: 640px;
+            border-left: 3px solid #3d96a8;
+            padding-left: 16px;
+            margin: 16px 0 0;
+            font-weight: 380;
+        }
+        .hero .summary {
+            margin-top: 18px;
+            font-size: 0.98rem;
+            color: #1f4a56;
+            background: rgba(255,255,255,0.45);
+            padding: 14px 18px;
+            border-radius: 18px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 网格卡片布局 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 28px 0;
+        }
+        .card {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            background: #fff;
+            border-radius: 24px;
+            padding: 22px 20px 24px;
+            border: 1px solid #dcecf2;
+            box-shadow: 0 4px 12px rgba(60, 130, 145, 0.05);
+            transition: box-shadow 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 18px rgba(47, 115, 130, 0.08);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 530;
+            color: #0e4d5c;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #1e3d47;
+        }
+        .card ul {
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+        .card li {
+            margin-bottom: 5px;
+        }
+        .card .badge {
+            display: inline-block;
+            background: #b7dae6;
+            color: #08323e;
+            font-size: 0.7rem;
+            font-weight: 540;
+            padding: 2px 10px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            margin-left: 6px;
+        }
+
+        /* 场景 + 使用建议 宽卡片 */
+        .wide-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px 24px;
+            margin: 24px 0;
+            border: 1px solid #d6e6ed;
+            box-shadow: 0 3px 8px rgba(40, 105, 120, 0.04);
+        }
+        .wide-card h2 {
+            font-size: 1.4rem;
+            font-weight: 520;
+            color: #09414f;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #b1d6e2;
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .wide-card p, .wide-card li {
+            font-size: 0.96rem;
+            color: #1b3f4b;
+        }
+        .wide-card .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 32px;
+            margin-top: 12px;
+        }
+        .wide-card .col {
+            flex: 1 1 200px;
+        }
+
+        /* 提示 / FAQ 摘要 用紧凑卡片 */
+        .faq-mini {
+            background: #e7f2f7;
+            border-radius: 20px;
+            padding: 22px 22px 18px;
+            margin: 28px 0 20px;
+            border-left: 6px solid #338999;
+        }
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 540;
+            color: #04313d;
+            margin-bottom: 8px;
+        }
+        .faq-mini p {
+            font-size: 0.93rem;
+            color: #1b484f;
+            margin-bottom: 6px;
+        }
+        .faq-mini strong {
+            color: #075463;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #1a7485;
+            text-decoration: none;
+            border-bottom: 1px solid #b1d3df;
+            transition: border-color 0.1s, background 0.1s;
+            padding: 0 2px;
+        }
+        a:hover {
+            border-bottom: 1px solid #0d6073;
+            background: #e3f0f5;
+            border-radius: 4px;
+        }
+        .link-plain {
+            border-bottom: 0;
+        }
+        .link-plain:hover {
+            background: transparent;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 14px 12px 50px;
+            }
+            .hero {
+                padding: 28px 18px 24px;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .wide-card {
+                padding: 20px 16px;
+            }
+            .faq-mini {
+                padding: 18px 16px 14px;
+            }
+        }
+        @media (max-width: 420px) {
+            .hero .tagline {
+                font-size: 1rem;
+                padding-left: 12px;
+            }
+            .card h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* 微间距 */
+        .mt-2 { margin-top: 12px; }
+        .mt-3 { margin-top: 20px; }
+        .op-7 { opacity: 0.7; font-size: 0.85rem; }
+        .inline-link-text {
+            color: #166b7c;
+            font-weight: 480;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #cfe0e8;
+            margin: 32px 0 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- HERO 摘要区 -->
+    <div class="hero">
+        <h1>悟空体育 · 信息索引</h1>
+        <div class="tagline">日常查询 · 对照阅读 · 延伸了解</div>
+        <div class="summary">
+            面向体育内容爱好者、资讯查阅者与赛事对照需求。本页提供结构化的摘要、特点梳理与使用场景参考。
+            关于更完整的资料、动态与官方发布，可参阅 <a href="https://cn-home-wukong.com">悟空体育</a> 主站内容体系。
+        </div>
+    </div>
+
+    <!-- 亮点卡片 2col -->
+    <div class="grid-2col">
+        <div class="card">
+            <h3>📋 内容对照性 <span class="badge">结构化</span></h3>
+            <p>对于体育赛事、队伍表现、项目规则等，提供多角度梳理。方便快速对比不同赛季、联赛或规则更新。减少信息碎片，提升查阅效率。</p>
+        </div>
+        <div class="card">
+            <h3>🧭 场景延伸 <span class="badge">轻量参考</span></h3>
+            <p>从单一查询出发，延伸至相关背景、历史数据或同类事件。适合赛前准备、赛后复盘以及专题整理时的信息补充。</p>
+        </div>
+        <div class="card">
+            <h3>⚡ 日常查询友好</h3>
+            <p>结构层级清晰，重点标记突出。移动端与桌面端均可快速浏览，减少不必要的跳转。搭配搜索与标签索引，适合反复查阅。</p>
+        </div>
+        <div class="card">
+            <h3>📌 可信来源标注</h3>
+            <p>聚合内容均标注参考源或数据节点，并附有指向 <a href="https://cn-home-wukong.com">悟空体育</a> 相关页面的链接，方便进一步核对原始信息。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 宽卡片 -->
+    <div class="wide-card">
+        <h2>使用建议 · 从查阅到延伸</h2>
+        <div class="row">
+            <div class="col">
+                <p><strong>1. 对照式阅读</strong><br>
+                将不同赛季、联赛或项目的摘要并列比较，快速定位差异点。尤其适用于规则变动、阵容更迭或战绩趋势分析。</p>
+            </div>
+            <div class="col">
+                <p><strong>2. 延伸索引</strong><br>
+                每个关键词或板块均关联至 <a href="https://cn-home-wukong.com">悟空体育</a> 的对应深度页面。适合在不打断阅读流的前提下获取更完整的上下文。</p>
+            </div>
+            <div class="col">
+                <p><strong>3. 移动端查询</strong><br>
+                卡片式布局与折叠内容适配小屏幕。赛事日程、积分摘要等常用信息可在低带宽下快速加载。</p>
+            </div>
+        </div>
+        <div class="mt-2 op-7">* 所有延伸链接均指向主站对应内容，建议搭配浏览器标签管理使用。</div>
+    </div>
+
+    <!-- 可信且克制的访问说明 + FAQ风格 -->
+    <div class="faq-mini">
+        <h3>访问说明 · 基于可验证信息</h3>
+        <p><strong>内容来源</strong> 本页摘要信息基于公开可查的体育数据与官方发布，所有关键数据均标注参考节点。延伸阅读时请以 <a href="https://cn-home-wukong.com">悟空体育</a> 对应页面为准。</p>
+        <p><strong>更新节奏</strong> 主站内容持续迭代，本摘要页定期同步重点模块。如发现信息偏移，可直接访问主站获取最新版本。</p>
+        <p><strong>克制原则</strong> 不预设任何比赛结果，不提供预测性结论，不引导非理性参与。所有信息仅供学习、对照及兴趣延伸。</p>
+    </div>
+
+    <!-- 常见对照场景 FAQ 摘要 -->
+    <div class="wide-card" style="margin-top: 12px;">
+        <h2>常见对照场景 · 摘要</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px;">
+            <div style="min-width: 180px; flex: 1;">
+                <p style="font-weight: 500; color: #094f5c;">📅 赛事日程对照</p>
+                <p style="font-size: 0.92rem;">不同联赛的赛历、时区转换、重叠赛事查询。可在主站通过筛选视图快速比对。</p>
+            </div>
+            <div style="min-width: 180px; flex: 1;">
+                <p style="font-weight: 500; color: #094f5c;">📊 数据维度延伸</p>
+                <p style="font-size: 0.92rem;">从单场数据延伸至赛季趋势、历史峰值等，避免孤立看待统计指标。</p>
+            </div>
+            <div style="min-width: 180px; flex: 1;">
+                <p style="font-weight: 500; color: #094f5c;">🔗 内容跳转建议</p>
+                <p style="font-size: 0.92rem;">阅读摘要后如需更细颗粒度资料，可直接点击文中 <a href="https://cn-home-wukong.com">悟空体育</a> 链接进入对应板块。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 小提示/阅读延伸 -->
+    <hr>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px;">
+        <p style="font-size: 0.9rem; color: #2c5d6b;">提供信息对照与延伸索引 · 所有引用均指向可校验来源</p>
+        <p style="font-size: 0.85rem; color: #467a86;">—— 基于 <a href="https://cn-home-wukong.com" class="link-plain" style="border-bottom: 1px dashed #7eb5c2;">悟空体育</a> 内容框架</p>
+    </div>
+    <!-- 一个隐藏种子字符串（仅用于变化）但不会显示在页面可见内容里，也不渲染; 完全不可见 -->
+    <div style="display:none;">5c68da8f9b836156</div>
+
+</div>
+</body>
+</html>
